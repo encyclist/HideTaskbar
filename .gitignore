@@ -1,0 +1,10 @@
+﻿################################################################################
+# 此 .gitignore 文件已由 Microsoft(R) Visual Studio 自动创建。
+################################################################################
+
+/.vs/HideTaskbar/v16
+/HideTaskbar/bin/Debug
+/packages
+/HideTaskbar/obj/Debug
+/HideTaskbar/bin/x64/Debug
+/HideTaskbar/obj/x64/Debug
