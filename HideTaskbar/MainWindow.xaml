@@ -16,8 +16,9 @@
                 <ContextMenu>
                     <MenuItem Header="显示" Click="MenuItem_Click_Show" />
                     <MenuItem Header="隐藏" Click="MenuItem_Click_Hide" />
-                    <MenuItem Header="从任务栏隐藏" Click="MenuItem_Click_HideTaskbar" />
                     <MenuItem Header="复制" Click="MenuItem_Click_Copy" />
+                    <MenuItem Header="从任务栏隐藏" Click="MenuItem_Click_HideTaskbar" />
+                    <MenuItem Header="打开文件目录" Click="MenuItem_Click_OpenPath" />
                 </ContextMenu>
             </ListView.ContextMenu>
             <ListView.View>

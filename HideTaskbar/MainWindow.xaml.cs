@@ -84,6 +84,13 @@ namespace HideTaskbar
             NativeMethods.ShowWindow(item.rawPtr, SW_SHOW);
         }
 
+        private void MenuItem_Click_OpenPath(object sender, RoutedEventArgs e)
+        {
+            int index = listView.SelectedIndex;
+            WindowStatus item = (WindowStatus)listView.Items[index];
+            OpenFolderAndSelectFile(item.appPath);
+        }
+
         private void MenuItem_Click_Hide(object sender, RoutedEventArgs e)
         {
             int index = listView.SelectedIndex;
@@ -132,6 +139,12 @@ namespace HideTaskbar
             listView.Items.SortDescriptions.Add(lastSortDescription);
         }
 
+        private void OpenFolderAndSelectFile(String fileFullName)
+        {
+            System.Diagnostics.ProcessStartInfo psi = new System.Diagnostics.ProcessStartInfo("Explorer.exe");
+            psi.Arguments = "/e,/select," + fileFullName;
+            System.Diagnostics.Process.Start(psi);
+        }
 
 
 
@@ -148,7 +161,8 @@ namespace HideTaskbar
 
 
 
-        
+
+
 
 
         public void ListAllWindows()
