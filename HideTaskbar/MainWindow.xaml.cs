@@ -139,11 +139,17 @@ namespace HideTaskbar
             listView.Items.SortDescriptions.Add(lastSortDescription);
         }
 
+        // 打开资源管理器并定位到相应文件
         private void OpenFolderAndSelectFile(String fileFullName)
         {
-            System.Diagnostics.ProcessStartInfo psi = new System.Diagnostics.ProcessStartInfo("Explorer.exe");
+            if (fileFullName == null || fileFullName.Equals("")) 
+            {
+                MessageBox.Show("无法定位文件，可能是权限不足", "错误", MessageBoxButton.OK);
+                return;
+            }
+            ProcessStartInfo psi = new ProcessStartInfo("Explorer.exe");
             psi.Arguments = "/e,/select," + fileFullName;
-            System.Diagnostics.Process.Start(psi);
+            Process.Start(psi);
         }
 
 
