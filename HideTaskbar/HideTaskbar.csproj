@@ -81,12 +81,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="WindowHelper.cs" />
-    <Compile Include="NewFolder1\NativeMethods.cs" />
-    <Compile Include="NewFolder1\TopLevelWindowUtils.cs" />
-    <Compile Include="NewFolder1\WindowHandle.cs" />
-    <Compile Include="NewFolder1\WindowHandleExtensions.cs" />
-    <Compile Include="WindowHandleInfo.cs" />
+    <Compile Include="bean\WindowStatus.cs" />
+    <Compile Include="helper\WindowHelper.cs" />
+    <Compile Include="helper\NativeMethods.cs" />
+    <Compile Include="helper\TopLevelWindowUtils.cs" />
+    <Compile Include="helper\WindowHandle.cs" />
+    <Compile Include="helper\WindowHandleExtensions.cs" />
+    <Compile Include="helper\WindowHandleInfo.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -127,6 +128,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\ic_refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ic_refresh.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

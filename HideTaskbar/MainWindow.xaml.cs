@@ -20,6 +20,7 @@ using System.Management;
 using Win32Interop.WinHandles;
 using Win32Interop.WinHandles.Internal;
 using System.Drawing;
+using HideTaskbar.bean;
 
 namespace HideTaskbar
 {
@@ -29,7 +30,6 @@ namespace HideTaskbar
     public partial class MainWindow : Window
     {
 
-        private static int GWL_EXSTYLE = -20; // GWL_EXSTYLE 得到扩展的窗口风格
         private static long WS_EX_TOOLWINDOW = 0x00000080L; // 128
         private static int SW_SHOW = 5; // 激活窗口，并将其显示为当前大小和位置。
         private static int SW_HIDE = 0; // 隐藏窗口并激活另一个窗口。
@@ -73,7 +73,7 @@ namespace HideTaskbar
         {
             int index = listView.SelectedIndex;
             WindowStatus item = (WindowStatus)listView.Items[index];
-            NativeMethods.SetWindowLongPtr(item.rawPtr, GWL_EXSTYLE, WS_EX_TOOLWINDOW);
+            NativeMethods.SetWindowLongPtr(item.rawPtr, WindowStatus.GWL_EXSTYLE, WS_EX_TOOLWINDOW);
             refresh();
         }
 
@@ -132,32 +132,6 @@ namespace HideTaskbar
             listView.Items.SortDescriptions.Add(lastSortDescription);
         }
 
-        class WindowStatus
-        {
-            public string windowName { set; get; }
-            public string status { set; get; }
-            public bool visible { set; get; }
-            public string processName { set; get; }
-            public IntPtr rawPtr { set; get; }
-            public WindowHandle windowHandle { get; }
-            public WindowStatus(WindowHandle windowHandle)
-            {
-                IntPtr rawPtr = windowHandle.RawPtr; // 窗口句柄
-                long dwExStyle = NativeMethods.GetWindowLong(rawPtr, GWL_EXSTYLE); // 窗口风格
-                int calcID; // 进程ID
-                NativeMethods.GetWindowThreadProcessId(rawPtr, out calcID);
-                Process myProcess = Process.GetProcessById(calcID);
-                //var appPath = myProcess.MainModule.FileName;
-                //Icon icon = System.Drawing.Icon.ExtractAssociatedIcon(appPath);
-
-                this.windowHandle = windowHandle;
-                this.windowName = windowHandle.GetWindowText();
-                this.status = "0x"+dwExStyle.ToString("x")+"L";
-                this.visible = windowHandle.IsVisible();
-                this.processName = myProcess.ProcessName;
-                this.rawPtr = rawPtr;
-            }
-        }
 
 
 

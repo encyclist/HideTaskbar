@@ -22,6 +22,13 @@
             </ListView.ContextMenu>
             <ListView.View>
                 <GridView>
+                    <GridViewColumn Header="图标">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Width="20" Height="20" Source="{Binding icon}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                     <GridViewColumn Header="进程" Width="150" DisplayMemberBinding="{Binding processName}"/>
                     <GridViewColumn Header="窗口名称" Width="280" DisplayMemberBinding="{Binding windowName}"/>
                     <GridViewColumn Header="显示状态" Width="100" DisplayMemberBinding="{Binding status}"/>
